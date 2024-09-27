@@ -1,0 +1,165 @@
+/* Enter your custom styles here */
+.hero-container {
+    background: linear-gradient(to bottom, #000, #646363);
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white !important;
+ 
+}
+ 
+.mainmenutext {
+    padding: 5px;
+    color: white;
+    font-size: large;
+    font-weight: bold;
+}
+.mybrandstoolbar.sapMIBar{
+    height: 2.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+}
+.welcome {
+    line-height: 1.5;
+    text-align: center;
+    word-spacing: 5px;
+    color: #ffffff !important;
+    font-size: larger;
+    font-weight: bolders;
+}
+
+.headers.sapMIBar {
+    background: black;
+    height: 50px;
+    border-bottom: none;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    
+}
+
+.headers.sapMTBStandard {
+    border-bottom: none;
+}
+
+.select {
+    padding: 10px;
+    line-height: 1.5;
+    text-align: center;
+    color: #000;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.next .sapMBtnInner {
+    height: 40px;
+    width: 350px;
+}
+
+.features__item-2 {
+    border-radius: 10px;
+    border-right: none;
+    box-shadow: 0 20px 50px 0 rgba(2, 0, 40, .1);
+    padding: 45px 40px;
+    position: relative;
+    -webkit-transform: translateZ(0);
+}
+.pleaseenter1 {
+    line-height: 1.5;
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: justify;
+    text-justify: inter-word;
+    display: flex;
+    color: #000 !important;
+    padding: 10px;
+    font-size: small;
+    font-weight: lighter;
+}
+
+.next .sapMBtnContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.next .sapUiIcon {
+
+    align-content: flex-end;
+    padding-top: 7px;
+}
+
+.createBtn.sapMBtnBase .sapMBtnInner{
+    width: 100%;
+
+    /* width: 180px; */
+ 
+}
+.createBtn.sapMBtnBase:hover{
+    width: 100%;
+    /* width: 180px; */
+ 
+}
+.createBtn.sapMBtn:hover>.sapMBtnDefault.sapMBtnHoverable{
+    width: 100%;
+    /* width: 180px; */
+    border:none
+}
+
+.flexContainer {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+.custom-bar.sapMIBar {
+    background-color: #454545;
+   font-weight: bold;
+}
+.customersearch{
+    color: white;
+}
+.newcustpage{
+    background-color: white;
+}
+.wide-button1 .sapMBtnInner {
+
+    background-color: rgb(8, 78, 88);
+  
+    height: 35px;
+    padding: 5px;
+ 
+}
+.Newcustomer {
+    padding: 10px;
+    line-height: 1.5;
+    text-align: center;
+    color: #000;
+    font-size: larger;
+    font-weight: light;
+    word-spacing: 5px;
+}
+
+
+.wide-button1 .sapMBtnContent {
+    color: white;
+}
+
+.wide-button .sapMBtnInner:not(.sapMToggleBtnPressed):not(.sapMBtnAccept):not(.sapMBtnAttention):not(.sapMBtnReject):not(.sapMBtnActive):not(.sapMBtnGhost) {
+    color: #fff;
+    background-color: rgb(8, 168, 168);
+   
+    height: 30px;
+    width: 180px;
+    text-align: center;
+}
+.pleaseenter {
+    line-height: 1.5;
+    word-spacing: 2px;
+    text-align: center;
+    color: #000 !important;
+    font-size: medium;
+    margin-bottom: 10px;
+}

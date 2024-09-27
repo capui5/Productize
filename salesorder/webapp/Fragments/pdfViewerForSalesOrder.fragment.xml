@@ -1,0 +1,22 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
+    class="sapUiSizeCompact">
+    <Dialog title="{i18n>Luxasia}"  draggable="true" resizable="true" contentHeight="80%">
+        <customHeader>
+            <Bar>
+                <contentMiddle>
+                    <Label text="{/pdfTitle}" design="Bold" /> 
+
+                </contentMiddle>
+                <contentRight>
+               <Button text="Print" press="printPdfImages"></Button>
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <content>
+            <core:HTML   />
+        </content>
+        <endButton>
+            <Button text="{i18n>Cancel}" press="handlePdfViewerCancel" />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

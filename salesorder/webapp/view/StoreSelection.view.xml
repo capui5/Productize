@@ -1,0 +1,54 @@
+<mvc:View controllerName="com.product.salesorder.controller.StoreSelection"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"  xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+  
+        <Page showHeader="false">
+        <OverflowToolbar class="headers">
+            <Text
+                text="{i18n>SalesOrder}"
+                class="mainmenutext"
+            />
+        </OverflowToolbar>
+        <FlexBox
+            height="600px"
+            alignItems="Center"
+            justifyContent="Center"
+        >
+            <VBox width="{= ${device>/system/phone} ? '380px' : '480px'}" alignItems="Center" class ="features__item-2">
+                <Title
+                    text="{i18n>Welcome_CE_app}"
+                 
+                />
+
+                <Text
+                    text="{i18n>Please_select_your_store}"
+                    class="select"
+                />
+
+                <Select
+                    items="{
+        path: 'mainModel>/StoreSet',
+        length: 5000
+    }"
+                    id="storeSelect"
+                    width="300px"
+                    forceSelection="false"
+                >
+                    <core:Item
+                        key="{mainModel>StoreId}"
+                        text="{= ${mainModel>StoreId} + ' ' + ${mainModel>StoreName} + ',' + ${mainModel>Street} }"
+                    />
+                </Select>
+
+                <Button
+                    text="{i18n>Next}"
+                    press="onNextPagePress"
+                    type= "Emphasized"
+                    class="next"
+                    
+                    iconFirst="false"
+                />
+            </VBox>
+        </FlexBox>
+    </Page>
+</mvc:View>

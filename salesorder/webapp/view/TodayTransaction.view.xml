@@ -1,0 +1,267 @@
+
+<mvc:View
+  controllerName="com.product.salesorder.controller.TodayTransaction"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:fb="sap.ui.comp.filterbar"
+>
+     <Page showHeader="false">
+        <Toolbar class="headers">
+            <Button
+                icon="sap-icon://nav-back"
+                press="onNavBack"
+            />
+            <Text
+                text="{i18n>SalesOrder}"
+                class="mainmenutext"
+            />
+            <ToolbarSpacer />
+          
+        </Toolbar>
+        <OverflowToolbar
+            class="header2"
+          
+        >
+            <Title
+                id="displayText"
+                text="{i18n>Todays_Transaction}"
+              
+            />
+            <ToolbarSpacer />
+            <!-- <SearchField
+                    placeholder="Search"
+                    change="onSearch"
+                /> -->
+            <Button
+                id="mytransac"
+                text="{i18n>My_Transaction}"
+                press="onMyTransactions"
+               width="250px"
+
+            />
+            <Button
+                id="storetransac"
+                text="{i18n>Store_Transaction}"
+                press="onCompletedTransactions"
+              width="250px"
+            />
+        </OverflowToolbar>
+        <content>
+            <fb:FilterBar
+                id="filterbar1"
+                persistencyKey="myPersKey"
+                useToolbar="false"
+                search="onGoPress"
+                filterChange=".onFilterChange"
+                afterVariantLoad=".onAfterVariantLoad"
+            >
+                <fb:filterGroupItems>
+                    <fb:FilterGroupItem
+                        name="Name"
+                        label="{i18n>Search_By_SO_NO}"
+                        groupName="Group1"
+                        visibleInFilterBar="true"
+                    >
+                        <fb:control>
+                            <SearchField
+                                id="salesOrderSearchField"
+                                placeholder="Search"
+                                change="onSearch"
+                            />
+                        </fb:control>
+                    </fb:FilterGroupItem>
+                    <fb:FilterGroupItem
+                        name="Customer No"
+                        label="{i18n>Search_By_Sold_TO}"
+                        groupName="Group1"
+                        visibleInFilterBar="true"
+                    >
+                        <fb:control>
+                            <SearchField
+                                id="customersearchfield"
+                                change="onSearchWithCust"
+                            />
+                        </fb:control>
+                    </fb:FilterGroupItem>
+                    <fb:FilterGroupItem
+                        name="Begin Date"
+                        label="Begin Date"
+                        groupName="Group1"
+                        visibleInFilterBar="true"
+                    >
+                        <fb:control>
+                            <DatePicker
+                                id="salesOrderBeginDate"
+                                displayFormat="MM/dd/yyyy"
+                            />
+                        </fb:control>
+                    </fb:FilterGroupItem>
+                    <fb:FilterGroupItem
+                        name="End Date"
+                        label="End Date"
+                        groupName="Group1"
+                        visibleInFilterBar="true"
+                    >
+                        <fb:control>
+                            <DatePicker
+                                id="salesOrderEndDate"
+                                displayFormat="MM/dd/yyyy"
+                            />
+                        </fb:control>
+                    </fb:FilterGroupItem>
+                </fb:filterGroupItems>
+            </fb:FilterBar>
+            <Table
+                id="salesTable"
+                items="{mainModel>/SalesOrderHeadSet}"
+                inset="false"
+                growingThreshold="100"
+                growing="true"
+                updateFinished="onTableUpdateFinished"
+            >
+                <columns>
+                    <Column>
+                        <Text text="{i18n>Sales_Order_Number}" />
+                    </Column>
+                    <Column hAlign="Center">
+                        <Text text="{i18n>Doc_Type}" />
+                    </Column>
+                    <Column
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                    >
+                        <Text text="{i18n>Doc_Date}" />
+                    </Column>
+                    <Column
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                    >
+                        <Text text="{i18n>Currency}" />
+                    </Column>
+                    <Column
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                    >
+                        <Text text="{i18n>Net_Price}" />
+                    </Column>
+                    <Column
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                    >
+                        <Text text="{i18n>Soldto_party}" />
+                    </Column>
+                    <Column hAlign="Center">
+                        <Text text="{i18n>View_Sales_Order}" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem type="Active">
+                        <cells>
+                            <Text text="{mainModel>SalesorderNo}" />
+                            <Text text="{mainModel>DocType}" />
+                            <!-- <Text text="{mainModel>DocDate}"/> -->
+                            <Text
+                                text="{
+				        path: 'mainModel>DocDate',
+				        type: 'sap.ui.model.type.Date',
+				        formatOptions: {
+				          pattern: 'MM/dd/yyyy'
+				        }
+				      }"
+                            />
+                            <Text text="{mainModel>Currency}" />
+                            <Text text="{mainModel>NetPrice}" />
+                            <Text text="{mainModel>SoldTo}" />
+                            <Button
+                                icon="sap-icon://arrow-right"
+                                press="onSalesOrderPress"
+                            />
+                            <!-- <Text
+                                text="{SalesData>SaleId}"
+                                class="myBlackText"
+                            />
+                            <VBox>
+                                <items>
+                                    <List
+                                        items="{SalesData>Products}"
+                                        mode="None"
+                                    >
+                                        <items>
+                                            <CustomListItem>
+                                                <HBox>
+                                                    <items>
+                                                        <Text
+                                                            text="{SalesData>Name}"
+                                                            class="myBlackText"
+                                                        />
+                                                        <Button
+                                                            icon="sap-icon://delete"
+                                                            press="onDeleteProduct"
+                                                            class="deleteicon"
+                                                        />
+                                                    </items>
+                                                </HBox>
+                                            </CustomListItem>
+                                        </items>
+                                    </List>
+                                </items>
+                            </VBox>
+                            <VBox>
+                                <Text
+                                    text="{= ${SalesData>Products/0/Price} }"
+                                    class="myBlackText"
+                                />
+                                <Text
+                                    text="{= ${SalesData>Products/1/Price} }"
+                                    class="myBlackText"
+                                />
+                            </VBox>
+
+                            <Text
+                                text="{path: 'SalesData>Products', formatter: '.calculateTotalPrice'}"
+                                class="myBlackText"
+                            />
+                            <Text
+                                text="{= ${SalesData>Products/0/Customer} }"
+                                class="myBlackText"
+                            />
+                            <Text
+                                text="{= ${SalesData>Products/0/Status} }"
+                                class="myBlackText"
+                            />
+                            <Text
+                                text="{= ${SalesData>Products/0/Reference} }"
+                                class="myBlackText"
+                            /> -->
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+        <footer>
+            <OverflowToolbar
+                class=""
+                id=""
+            >
+                <!-- <CheckBox
+                    text="Boutique"
+                    select="onConditionTypeCheckBox"
+                />
+                <Button
+                    id="onConditionTypeButton"
+                    visible="false"
+                    text="Payment Type"
+                    press="onConditionTypeButtonPress"
+                /> -->
+
+                <ToolbarSpacer />
+
+                <Title
+                    text="Total Amount of Sales Order: {view>/totalNetPrice}"
+                />
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>

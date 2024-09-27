@@ -1,0 +1,233 @@
+<mvc:View
+    controllerName="com.product.salesorder.controller.SearchCustomer"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:m="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:fb="sap.ui.comp.filterbar"
+>
+    <Page showHeader="false">
+        <OverflowToolbar
+            class="headers"
+            id="otbSubheader1"
+        >
+            <Button
+                icon="sap-icon://nav-back"
+                press="onNavBackToMainMenu"
+            />
+            <Text
+                text="SALES ORDER"
+                class="mainmenutext"
+            />
+                    <ToolbarSpacer />
+        
+                <Button
+                    text="NEW PROFILE"
+                    press="onNextPage"
+                    type= "Emphasized"
+                
+                />
+        </OverflowToolbar>
+
+        <Toolbar class="custom-bar">
+           
+                <Text
+                    text="Customer Search"
+                    class="customersearch"
+                />
+
+         
+        </Toolbar>
+        <content>
+        
+            <fb:FilterBar
+                id="filterbar"
+                persistencyKey="myPersKey"
+                useToolbar="false"
+                search="onSearch"
+                filterChange=".onFilterChange"
+                afterVariantLoad=".onAfterVariantLoad"
+            >
+                <fb:filterGroupItems>
+                    <fb:FilterGroupItem
+                        visible="false"
+                        name="Name"
+                        label="Customer No"
+                        groupName="Group1"
+                        visibleInFilterBar="true"
+                    >
+                        <fb:control>
+                            <Input
+                                visible="false"
+                                id="customerno"
+                                placeholder="Customer No"
+                            />
+                        </fb:control>
+                    </fb:FilterGroupItem>
+                    <fb:FilterGroupItem
+                        name="Name"
+                        label="Mobile No"
+                        groupName="Group2"
+                        visibleInFilterBar="true"
+                    >
+                        <fb:control>
+                            <Input
+                                id="mobileInput"
+                                placeholder="Mobile No"
+                            />
+                        </fb:control>
+                    </fb:FilterGroupItem>
+                    <fb:FilterGroupItem
+                        name="Begin Date"
+                        label="Email Address"
+                        groupName="Group3"
+                        visibleInFilterBar="true"
+                    >
+                        <fb:control>
+                            <Input
+                                id="emailInput"
+                                placeholder="Email Address"
+                            />
+                        </fb:control>
+                    </fb:FilterGroupItem>
+                    <fb:FilterGroupItem
+                        name="End Date"
+                        label="First Name"
+                        groupName="Group4"
+                        visibleInFilterBar="true"
+                    >
+                        <fb:control>
+                            <Input
+                                id="nameInput"
+                                placeholder="First Name"
+                            />
+                        </fb:control>
+                    </fb:FilterGroupItem>
+                    <fb:FilterGroupItem
+                        name="End Date"
+                        label="Last Name"
+                        groupName="Group5"
+                        visibleInFilterBar="true"
+                    >
+                        <fb:control>
+                            <Input
+                                id="surnameInput"
+                                placeholder="Last Name"
+                            />
+                        </fb:control>
+                    </fb:FilterGroupItem>
+                </fb:filterGroupItems>
+            </fb:FilterBar>
+            <Table
+                id="customerTable"
+                alternateRowColors="true"
+                visible="false"
+                inset="false"
+                class="myCustomTable"
+               
+                growing="true"
+                growingThreshold="100"
+            >
+                <columns>
+                    <Column
+                        hAlign="Center"
+                        demandPopin="true"
+                    >
+                        <Text text="Customer No" />
+                    </Column>
+                    <Column
+                        hAlign="Center"
+                        demandPopin="true"
+                        minScreenWidth="Tablet"
+                    >
+                        <Text text="Mobile No" />
+                    </Column>
+                    <Column
+                        hAlign="Center"
+                        demandPopin="true"
+                        minScreenWidth="Tablet"
+                    >
+                        <Text text="Email Address" />
+                    </Column>
+                    <Column
+                        hAlign="Center"
+                        demandPopin="true"
+                        minScreenWidth="Tablet"
+                    >
+                        <Text text="First Name" />
+                    </Column>
+                    <Column
+                        hAlign="Center"
+                        demandPopin="true"
+                        minScreenWidth="Tablet"
+                    >
+                        <Text text="Last Name" />
+                    </Column>
+                    <Column
+                        hAlign="Center"
+                        demandPopin="true"
+                    >
+                        <Text text="Purchase History" />
+                    </Column>
+                    <Column
+                        hAlign="Center"
+                        demandPopin="true"
+                    >
+                        <Text text="Edit" />
+                    </Column>
+                    <Column
+                        hAlign="Center"
+                        demandPopin="true"
+                    >
+                        <Text text="Sales Order" />
+                    </Column>
+                    <!-- <Column id="actionButton" columnPersonalizationText="Action Button"/> -->
+                </columns>
+
+                <items>
+                    <ColumnListItem >
+                        <cells>
+                            <Text
+                               
+                                class="myBlackText"
+                            />
+
+                            <Text
+                      
+                                class="myBlackText"
+                            />
+
+                            <Text
+                                
+                                class="myBlackText"
+                            />
+
+                            <Text
+                               
+                                class="myBlackText"
+                            />
+
+                            <Text
+                             
+                                class="myBlackText"
+                            />
+                            <Button
+                                icon="sap-icon://customer-financial-fact-sheet"
+                                press="OnCustPurchaseHistoryPress"
+                            />
+                            <Button
+                                icon="sap-icon://edit"
+                                press="onCustomerEditPress"
+                            />
+                            <Button
+                                icon="sap-icon://arrow-right"
+                                press="onCustomerPress"
+                            />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>

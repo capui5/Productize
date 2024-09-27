@@ -1,0 +1,348 @@
+{
+    "_version": "1.59.0",
+    "sap.app": {
+        "id": "com.product.salesorder",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.14.2",
+            "toolsId": "0a3e0cc2-9cf1-4e24-ae53-8d42daf3ac74"
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "Sales Order-Creation": {
+                    "semanticObject": "Sales Order",
+                    "action": "Creation",
+                    "title": "{{flpTitle}}",
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    }
+                }
+            }
+        },
+        "dataSources": {
+            "ZSDGW_CE_APP_SRV": {
+                "uri": "/sap/opu/odata/sap/ZSDGW_CE_APP_SRV",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.126.2",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "com.product.salesorder.i18n.i18n"
+                }
+            },
+            "BrandStoreModel": {
+                "type": "sap.ui.model.json.JSONModel",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay"
+                }
+            },
+            "StoreModel": {
+                "type": "sap.ui.model.json.JSONModel",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay"
+                }
+            },
+            "SelectedBrandName": {
+                "type": "sap.ui.model.json.JSONModel",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay"
+                }
+            },
+            "CampaignModel": {
+                "type": "sap.ui.model.json.JSONModel",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay"
+                }
+            },
+            "HeaderCampaignModel": {
+                "type": "sap.ui.model.json.JSONModel",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay"
+                }
+            },
+            "SelectedItems": {
+                "type": "sap.ui.model.json.JSONModel",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay"
+                }
+            },
+            "CustomerNoModel": {
+                "type": "sap.ui.model.json.JSONModel",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay"
+                }
+            },
+            "ResponseModel": {
+                "type": "sap.ui.model.json.JSONModel",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay"
+                }
+            },
+            "SalesEmployeeModel": {
+                "type": "sap.ui.model.json.JSONModel",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay"
+                }
+            },
+            "SalesEmployeesModel": {
+                "type": "sap.ui.model.json.JSONModel",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay"
+                }
+            },
+            "LoginUserModel": {
+                "type": "sap.ui.model.json.JSONModel",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay"
+                }
+            },
+            "LocalTouristModel": {
+                "type": "sap.ui.model.json.JSONModel",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay"
+                }
+            },
+            "TotalRetailPrice": {
+                "type": "sap.ui.model.json.JSONModel",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay"
+                }
+            },
+            "SelectedCustomerModel": {
+                "type": "sap.ui.model.json.JSONModel",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay"
+                }
+            },
+            "localModel": {
+                "type": "sap.ui.model.json.JSONModel",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay"
+                }
+            },
+            "mainModel": {
+                "preload": true,
+                "dataSource": "ZSDGW_CE_APP_SRV",
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "com.product.salesorder.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteStoreSelection",
+                    "pattern": ":?query:",
+                    "target": [
+                        "TargetStoreSelection"
+                    ]
+                },
+                {
+                    "name": "Brand",
+                    "pattern": "Brand/{SStoreId}",
+                    "target": [
+                        "Brand"
+                    ]
+                },
+                {
+                    "name": "MainMenu",
+                    "pattern": "MainMenu",
+                    "target": [
+                        "MainMenu"
+                    ]
+                },
+                {
+                    "name": "SearchCustomer",
+                    "pattern": "SearchCustomer",
+                    "target": [
+                        "SearchCustomer"
+                    ]
+                },
+                {
+                    "name": "NewProfile",
+                    "pattern": "NewProfile",
+                    "target": [
+                        "NewProfile"
+                    ]
+                },
+                {
+                    "name": "Transaction",
+                    "pattern": "Transaction",
+                    "target": [
+                        "Transaction"
+                    ]
+                },
+                {
+                    "name": "TodayTransaction",
+                    "pattern": "TodayTransaction",
+                    "target": [
+                        "TodayTransaction"
+                    ]
+                },
+                {
+                    "name": "SalesOrderItem",
+                    "pattern": "SalesOrderItem/{SSalesno}/{SSoldTo}",
+                    "target": [
+                        "SalesOrderItem"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetStoreSelection": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "StoreSelection",
+                    "viewName": "StoreSelection"
+                },
+                "Brand": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "Brand",
+                    "viewName": "Brand"
+                },
+                "MainMenu": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "MainMenu",
+                    "viewName": "MainMenu"
+                },
+                "SearchCustomer": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "SearchCustomer",
+                    "viewName": "SearchCustomer"
+                },
+                "NewProfile": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "NewProfile",
+                    "viewName": "NewProfile"
+                },
+                "Transaction": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "Transaction",
+                    "viewName": "Transaction"
+                },
+                "TodayTransaction": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "TodayTransaction",
+                    "viewName": "TodayTransaction"
+                },
+                "SalesOrderItem": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "SalesOrderItem",
+                    "viewName": "SalesOrderItem"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "com.product.salesorder.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "productize"
+    }
+}

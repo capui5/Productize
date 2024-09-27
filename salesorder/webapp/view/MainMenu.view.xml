@@ -1,0 +1,70 @@
+<mvc:View
+   controllerName="com.product.salesorder.controller.MainMenu"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Page showHeader="false">
+        <OverflowToolbar
+            class="headers"
+            id="otbSubheader"
+        >
+            <Button
+                icon="sap-icon://nav-back"
+                press="onNavBacktoBrand"
+            />
+            <Text
+                text="SALES ORDER"
+                class="mainmenutext"
+            />
+        </OverflowToolbar>
+        <VBox class="hero-container">
+            <Text
+                text="WELCOME"
+                class="welcome"
+            />
+            <Text
+                text="WHAT WOULD YOU LIKE TO DO?"
+                class="welcome"
+            />
+        </VBox>
+      
+        <GenericTile
+            class="genericTileClass sapUiSmallMarginBegin sapUiSmallMarginTop"
+            header="SEARCH FOR CUSTOMER"
+            press="SearchCustomer"
+        >
+            <TileContent>
+                <ImageContent src="sap-icon://search" />
+            </TileContent>
+        </GenericTile>
+        <GenericTile
+            class="genericTileClass sapUiSmallMarginBegin sapUiSmallMarginTop"
+            header="CREATE NEW PROFILE"
+            press="onCreateCustomer"
+        >
+            <TileContent>
+                <ImageContent src="sap-icon://person-placeholder" />
+            </TileContent>
+        </GenericTile>
+        <GenericTile
+            class="genericTileClass sapUiSmallMarginBegin sapUiSmallMarginTop"
+            header="CASH CARRY"
+            press="onCashCarry"
+        >
+            <TileContent>
+                <ImageContent src="sap-icon://tag" />
+            </TileContent>
+        </GenericTile>
+        <GenericTile
+            class="genericTileClass sapUiSmallMarginBegin sapUiSmallMarginTop"
+            header="TODAY'S TRANSACTION"
+            press="TodayTransaction"
+        >
+            <TileContent>
+                <ImageContent src="sap-icon://credit-card" />
+            </TileContent>
+        </GenericTile>
+    </Page>
+</mvc:View>

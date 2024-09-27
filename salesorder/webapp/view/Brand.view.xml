@@ -1,0 +1,139 @@
+ <mvc:View controllerName="com.product.salesorder.controller.Brand"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"  xmlns:core="sap.ui.core"    xmlns:l="sap.ui.layout"
+    xmlns="sap.m">
+ 
+ <SplitContainer  id="splitContainer"
+    initialDetail="detail"
+    initialMaster="master"
+    >
+    
+        <masterPages>
+            <Page
+                id="master"
+                backgroundDesign= "Solid"
+                showHeader="false"
+                navButtonPress="onBackToDetailPress"
+                showNavButton="true"
+                title="ADD MORE BRANDS"
+            >
+            	
+            <OverflowToolbar class= "mybrandstoolbar">
+             <Button
+                icon="sap-icon://nav-back"
+                press="onNavBacktoBrand"
+              />
+            <Title text="MY BRANDS"  ></Title>
+            <ToolbarSpacer/>
+             <Button
+                text="ADD MORE BRANDS"
+                icon="sap-icon://nav-back"
+                press="onBackToDetailPress"
+               visible="{= ${device>/system/phone}}"/>
+            </OverflowToolbar>
+                <content>
+                    <List
+                        items="{ path: 'SelectedBrandName>/selectedBrandNames'}"
+                    >
+                        <CustomListItem>
+                            <HBox class="flexContainer">
+                              <HBox width="90%">
+                                <VBox
+                                    class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom"
+                                >
+                                    <Title text="{SelectedBrandName>value}" />
+                                </VBox>
+                                 </HBox>
+                                  <HBox width="10%">
+                                        <VBox  class=" sapUiSmallMarginTopBottom" >
+                                            <Button
+                                                icon="sap-icon://delete"
+                                                press="onDeletePress"
+                                            />
+                                        </VBox>
+                                    </HBox>
+                            </HBox>
+                        </CustomListItem>
+                    </List>
+                </content>
+                     <footer>
+                	<Toolbar>
+            <Button
+             width="100%"
+                    text="LOGIN"
+                    press="Login"
+                type="Emphasized"
+                    class="createBtn"
+                />
+                	</Toolbar>
+        </footer>
+                    
+            </Page>
+        </masterPages>
+
+        <detailPages>
+       
+            <Page
+                id="detail"
+               navButtonTooltip="Go To added brands"
+                title="ADD NEW BRANDS"
+                backgroundDesign= "Solid"
+            >
+              <!-- <OverflowToolbar >
+            <Title text="{i18n>Add_New_Brands}"  ></Title>
+            <ToolbarSpacer />
+             
+            </OverflowToolbar> -->
+
+                <content>
+                      <List
+                        headerLevel="H2"
+                        items="{BrandStoreModel>/}"
+                        id="brandList"
+                    >
+                        <items>
+                            <CustomListItem
+                            >
+                                <HBox
+                                    alignItems="Center"
+                                    class="flexContainer"
+                                    justifyContent="SpaceBetween"
+                                >
+                                    <HBox width="90%">
+                                        <VBox   >
+                                            <Title
+                                             
+                                                text="{BrandStoreModel>BrandDesc}"
+                                             
+                                            />
+                                        </VBox>
+                                    </HBox>
+
+                                    <HBox  class=" sapUiSmallMarginTopBottom" width="10%">
+                                        <VBox >
+                                            <Button
+                                                icon="sap-icon://add"
+                                                press="onAddButtonPress"
+                                            />
+                                        </VBox>
+                                    </HBox>
+                                </HBox>
+                            </CustomListItem>
+                        </items>
+                    </List>
+                </content>
+                 <footer>
+        <Toolbar>
+            <Button
+                id=""
+                text="Go To Added Brands"
+                icon="sap-icon://nav-back"
+                 visible="{= ${device>/system/phone}}"
+                press="onBackToMasterPress"
+                 />
+        </Toolbar>
+    </footer>
+            </Page>
+          
+        </detailPages>
+    </SplitContainer>
+    </mvc:View>

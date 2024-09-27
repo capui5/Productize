@@ -1,0 +1,108 @@
+<mvc:View
+    controllerName="com.product.salesorder.controller.SalesOrderItem"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+>
+    <Page showHeader="false">
+        <OverflowToolbar
+            class="headers"
+        
+        >
+            <Text
+                text="LUXASIA"
+              class="mainmenutext"
+            />
+            <ToolbarSpacer />
+        </OverflowToolbar>
+
+        <Table
+            id="idProductsTable"
+            inset="false"
+            items="{SelectedCustomerModel>/}"
+        >
+            <infoToolbar>
+                <OverflowToolbar>
+                    <Title
+                        titleStyle="Auto"
+                        text="{i18n>SalesOrder_No} :{SelectedCustomerModel>/0/SalesorderNo}"
+                    />
+                    <ToolbarSpacer />
+
+                    <Button
+                        text="Email"
+                        press="OnEmailPress"
+                        id="emailtocust"
+                    />
+                    <Button
+                        text="{i18n>Open_PDF}"
+                        press="onOpenPDFPress"
+                    />
+                </OverflowToolbar>
+            </infoToolbar>
+            <columns>
+                <Column
+                    hAlign="Center"
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <Text text="{i18n>Product}" />
+                </Column>
+                <Column
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                    hAlign="Center"
+                >
+                    <Text text="{i18n>Artice_Number}" />
+                </Column>
+                <Column
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                    hAlign="Center"
+                >
+                    <Text text="{i18n>Quantity}" />
+                </Column>
+                <Column
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <Text text="{i18n>Free_Item}" />
+                </Column>
+                <Column
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <Text text="{i18n>Category}" />
+                </Column>
+                <Column
+                    minScreenWidth="Desktop"
+                    demandPopin="true"
+                >
+                    <Text text="{i18n>Net_Price}" />
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem vAlign="Middle">
+                    <cells>
+                        <Text text="{SelectedCustomerModel>ShortText}" />
+                        <Text text="{SelectedCustomerModel>Material}" />
+                        <Text text="{SelectedCustomerModel>TargetQty}" />
+                        <Text text="{SelectedCustomerModel>FreeItem}" />
+                        <Text text="{SelectedCustomerModel>ItemCateg}" />
+                        <Text text="{SelectedCustomerModel>NetPrice}" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer />
+                <Button
+                    class="transsave"
+                    press="onGoSalesCompletion"
+                    text="{i18n>Go_Back}"
+                    type="Emphasized"
+                />
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>

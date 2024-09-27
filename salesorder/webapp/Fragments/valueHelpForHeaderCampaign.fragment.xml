@@ -1,0 +1,22 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <SelectDialog
+        id="headerCampaign"
+        noDataText="No Header Campaign Found"
+        title="Select Header Campaign"
+        multiSelect="false"
+        searchPlaceholder="Search by Campaign Code"
+        search="onSearchHeaderCampaign"
+        confirm=".onValueHelpCloseHeaderCampaign"
+        items="{mainModel>/CampaignSet}"
+    >
+        <StandardListItem
+            title="{mainModel>CampaignId} {mainModel>ConditionType}"
+            description="{mainModel>CampaignIdDesc}"
+            iconInset="false"
+            type="Active"
+        />
+    </SelectDialog>
+</core:FragmentDefinition>

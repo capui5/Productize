@@ -1,0 +1,484 @@
+<mvc:View controllerName="com.product.salesorder.controller.Transaction" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.uxap"
+	xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns:tnt="sap.tnt"   xmlns:f="sap.ui.layout.form" xmlns:fb="sap.ui.comp.filterbar" xmlns:m="sap.m" height="100%">
+	<m:Page showHeader="false">
+      <m:OverflowToolbar
+            class="headers"
+            id="transheader"
+        >
+            <m:Text
+                text="SALES ORDER"
+                class="mainmenutext"
+            />
+        </m:OverflowToolbar>
+		<ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="true" upperCaseAnchorBar="false">
+			<headerTitle>
+				<ObjectPageDynamicHeaderTitle>
+					
+				</ObjectPageDynamicHeaderTitle>
+			</headerTitle>
+			<headerContent>
+				<f:Form
+                id="FormChange354"
+                editable="true"
+                class="returnFormClass"
+            >
+                <f:layout>
+                    <f:ResponsiveGridLayout
+                   
+                           labelSpanXL="4"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="0"
+                        emptySpanL="0"
+                        emptySpanM="0"
+                        emptySpanS="0"
+                        columnsXL="3"
+                        columnsL="3"
+                        columnsM="2"
+                        singleContainerFullSize="false"
+                       
+                    />
+                </f:layout>
+                <f:formContainers>
+                    <f:FormContainer>
+                        <f:formElements>
+                            
+                            <f:FormElement label="SALES EMPLOYEES">
+                                <f:fields>
+                                 <m:Input
+                                id="salesemployeeinput"
+                               
+                                showValueHelp="true"
+                                     valueHelpOnly="true"
+                                valueHelpRequest="onValueHelpSalesEmployee"
+                            />
+                                </f:fields>
+                            </f:FormElement>
+
+                            <f:FormElement label="HEADER CAMPAIGN">
+                                <f:fields>
+                                 <m:Input
+                                id="headercampaigninput"
+                               
+                                showValueHelp="true"
+                                     valueHelpOnly="true"
+                                valueHelpRequest="onValueHelpHeaderCampaign"
+                            />
+                                    
+                                    <!-- <ComboBox
+                                     id="Campaign"
+                                    items="{mainModel>/OrderReasonSet}"
+                                     class="wide-select custom-margin"
+                                    placeholder="SELECT PROMOTION"
+                                 
+                                >
+                                    <items>
+                                        <core:Item
+                                            key="{mainModel>OrderReasonKey}"
+                                            text="{mainModel>OrderReasonDesc}"
+                                        />
+                                    </items>
+                                </ComboBox> -->
+                                </f:fields>
+                            </f:FormElement>
+
+                            <f:FormElement label="DOCUMENT DATE">
+                                <f:fields>
+                                    <m:DatePicker
+                                        id="DP2"
+                                       
+                                        displayFormat="dd-MM-yyyy"
+                                        change="handleChange"
+                                        
+                                    />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="CUSTOMER NO">
+                                <f:fields>
+                                    <m:Input
+                                        id="firstNameInput"
+                                        value="CNCLOCAL"
+                                        placeholder="CUSTOMER NO"
+                                    />
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="RETURN">
+                                <f:fields>
+                                    <m:CheckBox
+                                        id="salesorderreason"
+                                        selected="false"
+                                        select="onClickOrderReason"
+                                    />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement
+                                id="orderFormElement"
+                                visible="false"
+                                label="ORDER REASON"
+                            >
+                                <f:fields>
+                                    <m:Select
+                                        required="true"
+                                        id="orderreason"
+                                      
+                                       forceSelection="false"
+                                    >
+                                        <m:items>
+                                            <core:Item
+                                                key="1"
+                                                text=""
+                                            />
+                                        </m:items>
+                                    </m:Select>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="PO REF.NO">
+                                <f:fields>
+                                    <m:Input
+                                        id="poreferenceno"
+                                        placeholder="PO REF.NO"
+                                    />
+                                </f:fields>
+                            </f:FormElement>
+                             <f:FormElement label="Currency">
+                                <f:fields>
+                                    <m:Text
+                                       text="USD"
+                                    />
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                </f:formContainers>
+            </f:Form>
+			</headerContent>
+			<sections>
+				<ObjectPageSection>
+					<subSections>
+						<ObjectPageSubSection>
+							<blocks>
+								<m:Table
+        alternateRowColors="true"
+            id="transactiontable"
+            items="{path: 'SelectedItems>/selectedItems', length: 5000}"
+        >
+            <m:headerToolbar>
+                <m:OverflowToolbar class="otbSubheader">
+                    <m:Text
+                        text="{i18n>POS_Transaction_ID}"
+                        class="transtext"
+                    />
+                    <m:ToolbarSpacer />
+                    <m:Button
+                        text="{i18n>Add_Products}"
+                        width="250px"
+                        press="onAddProduct"
+                        type="Emphasized"
+                    />
+                    <m:Button
+                        text="{i18n>Apply_Promotion}"
+                        press="onAddPromotion"
+                         width="250px"
+                         type="Emphasized"
+                       
+                    />
+                </m:OverflowToolbar>
+            </m:headerToolbar>
+            <m:columns>
+                <m:Column
+                    minScreenWidth="Tablet"
+                    width="120px"
+                    demandPopin="true"
+                >
+                    <m:Text text="{i18n>Apply_Promotion}" />
+                </m:Column>
+                <m:Column
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                    hAlign="Center"
+                    width="60px"
+                >
+                    <m:Text text="{i18n>Free_Item}"  />
+                </m:Column>
+                <!-- <Column
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                    hAlign="Center"
+                >
+                    <Text text="{i18n>Barcode}" />
+                </Column> -->
+                <m:Column
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                    hAlign="Center"
+                    width="150px"
+                >
+                    <m:Text text="{i18n>Artice_Number}" />
+                </m:Column>
+                <!-- <Column
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                    hAlign="Center"
+                >
+                    <Text text="{i18n>Product}" />
+                </Column> -->
+                <m:Column
+                    hAlign="Center"
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                    width="120px"
+                >
+                    <m:Text text="{i18n>Quantity}" />
+                </m:Column>
+
+                <m:Column
+                    hAlign="Center"
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <m:Text text="{i18n>UOM}" />
+                </m:Column>
+                <!-- <Column
+                    hAlign="Center"
+                    demandPopin="true"
+                    minScreenWidth="Tablet"
+                >
+                    <Text text="{i18n>Currency}" />
+                </Column> -->
+                <m:Column
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                   
+                >
+                    <m:Text text="{i18n>Price}" />
+                </m:Column>
+                <m:Column
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                    
+                >
+                    <m:Text text="{i18n>Discount}" />
+
+                    <!-- Initially, set visibility to false -->
+                </m:Column>
+                <m:Column
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+
+                >
+                    <m:Text text="{i18n>Net_Price}" />
+                </m:Column>
+                  <m:Column
+                    id="serialColumn" 
+                    minScreenWidth="Desktop"
+                    demandPopin="true"
+
+                >
+                    <m:Text text="{i18n>Serial_No}" />
+                </m:Column>
+               
+                <m:Column
+                    hAlign="Center"
+                    minScreenWidth="Desktop"
+                    demandPopin="true"
+                />
+            </m:columns>
+            <m:items>
+                <m:ColumnListItem vAlign="Middle">
+                    <m:cells>
+                        <!-- <ComboBox id="Icampaign" items="{CampaignModel>/}" class="wide-select custom-margin" placeholder="SELECT PROMOTION"
+							selectedKey="{SelectedItems>CampaignId}">
+							<items>
+							<core:Item key="{CampaignModel>CampaignId}" text="{CampaignModel>CampaignIdDesc}"/>
+							</items>
+						</ComboBox> -->
+
+                        <!-- <Select id="Itemlevelcampaign"  items="{
+					path: 'CampaignModel>/',
+					suspended: true 
+				}"   selectedKey="{SelectedItems>CampaignId}" change="handleLoadItems" liveChange="handleLoadItems">
+            <items>
+                   <core:Item
+                                    key="{CampaignModel>CampaignId}"
+                                    text="{CampaignModel>CampaignId} {CampaignModel>CampaignIdDesc}"
+                                />
+            </items>
+             <customData>
+        <core:CustomData key="onfocusin" value="handleLoadItems" writeToDom="true" />
+    </customData>
+        </Select> -->
+                        <!-- <ComboBox
+                            id="Itemlevelcampaign"
+                            items="{
+					path: 'CampaignModel>/',
+					suspended: true
+				}"
+                
+                            loadItems="handleLoadItems"
+                            class="wide-select custom-margin"
+                            placeholder="SELECT PROMOTION"
+                            selectedKey="{SelectedItems>CampaignId}"
+                        >
+                            <items>
+                           
+                                <core:Item
+                                    key="{CampaignModel>CampaignId}"
+                                    text="{CampaignModel>CampaignId} {CampaignModel>CampaignIdDesc}"
+                                />
+                            </items>
+                        </ComboBox> -->
+
+                        <m:Input
+                            visible="true"
+                            id="productInput"
+                            placeholder="Enter product"
+                            showValueHelp="true"
+                            valueHelpRequest=".handleLoadItems"
+                            valueHelpOnly="true"
+                        />
+
+                        <m:CheckBox
+                            selected="{SelectedItems>IsSelected}"
+                            select="onCheckBoxSelect"
+                        />
+                        <!-- <ObjectIdentifier text="{SelectedItems>Barcode}" /> -->
+                        <!-- <ObjectIdentifier text="{SelectedItems>ArticleNo}"/> -->
+                        <m:VBox >
+                        <m:ObjectIdentifier
+                            title="{path:'SelectedItems>ArticleNo',formatter:'.formatter.precendingZerosRemvoal'}"
+                            text="{SelectedItems>Barcode}"
+                            
+                        />
+                        <m:Text textAlign="Center"  text="{SelectedItems>ArticleDesc}"></m:Text>
+                       </m:VBox>
+                        <!-- <HBox>
+                            <items>
+                                <ObjectIdentifier
+                                    text="{SelectedItems>ArticleDesc}"
+                                />
+                                <Button
+                                    icon="sap-icon://delete"
+                                    press="onDeleteProduct"
+                                />
+                            </items>
+                        </HBox> -->
+                        <m:StepInput
+                            value="{SelectedItems>quantity}"
+                            min="1"
+                            id="stepinputitem"
+                            width="80px"
+                            validationMode="LiveChange"
+                            change="onQuantityChange"
+                        />
+
+                        <m:ObjectIdentifier text="{SelectedItems>UOM}" />
+                        <!-- <Text text="{SelectedItems>Currency}" /> -->
+                        <m:ObjectNumber number=" {SelectedItems>RetailPrice}" />
+                        <m:Text text=" {SelectedItems>Discount}" />
+                        <m:Text text="{SelectedItems>NetPrice}" />
+                          <m:Input
+                            visible="{= ${SelectedItems>SnoChk} === 'X' ? true : false }"
+                            id="serialinput"
+                            value ="{path:'SelectedItems>SerialNo',type : 'sap.ui.model.type.String'}"
+                            placeholder="Serial No"
+                            width="100px"
+                        />
+                           
+                        <m:Button
+                            icon="sap-icon://delete"
+                            press="onDeleteItem"
+                        />
+                        <!-- <StepInput
+                        value="{mainModel>quantity}"
+                        max=""
+                        min="0"
+                        step="1"
+                        width="80px"
+                        validationMode="LiveChange"
+                        change="onQuantityChange"
+                    /> -->
+                    </m:cells>
+                </m:ColumnListItem>
+            </m:items>
+        </m:Table>
+							</blocks>
+						</ObjectPageSubSection>
+					</subSections>
+				</ObjectPageSection>
+			</sections>
+		</ObjectPageLayout>
+		        <m:footer>
+            <m:OverflowToolbar
+                class=""
+                id=""
+                height="60px"
+            >
+                <m:FlexBox
+                  
+                    direction="Column"
+                    alignItems="Start"
+                >
+                    <m:Text
+                        id="totalnetprice" 
+                        class="myBlackText"
+                    />
+                    <m:Text
+                        id= "totaltaxprice"
+                        class="myBlackText"
+                    />
+                    <m:Text
+                    id="totalNetAndTaxPrice"
+                        class="myBlackText"
+                    />
+                </m:FlexBox>
+                <m:FlexBox
+                    direction="Column"
+                    alignItems="Start"
+                    justifyContent="End"
+                >
+                    <m:Text
+                        text=" "
+                        class="myBlackText"
+                    />
+                    <m:Text
+                        text=" "
+                        class="myBlackText"
+                    />
+                    <m:Text
+                        text=""
+                        class="myBlackText"
+                    />
+                </m:FlexBox>
+                <!-- <CheckBox
+                    text="Boutique"
+                    select="onConditionTypeCheckBox"
+                />
+                <Button
+                    id="onConditionTypeButton"
+                    visible="false"
+                    text="Payment Type"
+                    press="onConditionTypeButtonPress"
+                /> -->
+
+                <m:ToolbarSpacer />
+
+                <m:Button
+                    text="{i18n>Cancel}"
+                    press="onCancelPress"
+                   type="Emphasized"
+                />
+                <m:Button
+                    text="{i18n>Save_File}"
+                    press="onSavePress"
+                   type="Emphasized"
+                />
+            </m:OverflowToolbar>
+        </m:footer>
+	</m:Page>
+</mvc:View>

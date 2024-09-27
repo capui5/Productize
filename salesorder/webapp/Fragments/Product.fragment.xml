@@ -1,0 +1,129 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Dialog
+        showHeader="false"
+        id="producttablepage"
+    >
+        <Table
+            sticky="ColumnHeaders,HeaderToolbar"
+            id="producttable"
+            mode="MultiSelect"
+            selectionChange="onItemSelect"
+            inset="false"
+            items="{path: 'localModel>/'}"
+            growing="true"
+            growingThreshold="100"
+        >
+            <headerToolbar>
+                <OverflowToolbar>
+                    <content>
+                        <Title
+                            text="{i18n>SEARCH_FOR_PRODUCTS}"
+                            level="H2"
+                        />
+                        <SearchField
+                            width="22em"
+                            search="onSearch"
+                            placeholder="{i18n>Search_Products}"
+                        />
+                        <ToolbarSpacer />
+
+                        <Button
+                       
+                            icon="sap-icon://decline"
+                            press="closeSearchProd"
+                        />
+                    </content>
+                </OverflowToolbar>
+            </headerToolbar>
+            <columns>
+                <Column width="12em">
+                    <Text text="{i18n>Article_Code}" />
+                </Column>
+                <Column
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <Text text="{i18n>Barcode}" />
+                </Column>
+                <Column
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <Text text="{i18n>Product}" />
+                </Column>
+                <Column
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <Text text="{i18n>Article_Type}" />
+                </Column>
+            
+                <Column
+                    minScreenWidth="Desktop"
+                    demandPopin="true"
+                >
+                    <Text text="{i18n>UOM}" />
+                </Column>
+                 <Column  minScreenWidth="Tablet"
+                 demandPopin="true">
+                    <Text text="{i18n>Storage_Location}" />
+                </Column>
+                <Column
+                    minScreenWidth="Desktop"
+                    demandPopin="true"
+                >
+                    <Text text="{i18n>Price}" />
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem vAlign="Middle">
+                    <cells>
+                        <ObjectIdentifier
+                            title="{Name}"
+                            text="{path:'localModel>ARTICLENO',formatter:'.formatter.precendingZerosRemvoal'}"
+                        />
+                        <Text text="{localModel>Barcode}" />
+                        <Text text="{localModel>ArticleDesc}" />
+                        <Text text="{localModel>ArticleType}" />
+
+                        <!-- <ObjectNumber number="{ProductSetModel>ArticleNo}" /> -->
+                        <StepInput
+                            id="CurrentValueforstepinput"
+                            value="{quantity}"
+                            width="100px"
+                            min="1"
+                            class="step_input"
+                        />
+                        <Text text="{localModel>UOM}" />
+                            <Text text="{localModel>Stloc}" />
+                        <ObjectNumber number="{localModel>RetailPrice}" />
+                        <!-- <StepInput
+                            id="CurrentValue"
+                            value="{mainModel>quantity}"
+                            width="100px"
+                            class="step_input"
+                            change="currentChangeHandler"
+                        /> -->
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer />
+                <Button
+                    text="{i18n>Add_Sale}"
+                    press="onAddToSaleProducts"
+                        type="Emphasized"
+                >
+                    <layoutData>
+                        <OverflowToolbarLayoutData priority="NeverOverflow" />
+                    </layoutData>
+                </Button>
+            </OverflowToolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>

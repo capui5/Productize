@@ -1,0 +1,55 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Dialog showHeader="false">
+        <OverflowToolbar>
+            <ToolbarSpacer />
+            <Select
+             
+                id="CASHCARRY"
+            >
+                <items>
+                    <core:Item
+                        text="CNCLOCAL"
+                        key="1"
+                    />
+                      <core:Item
+                        text="CNCTOURIST"
+                        key="2"
+                    />
+                      
+                </items>
+            </Select>
+            <Button
+                icon="sap-icon://decline"
+                press="onCloseCashCarry"
+            />
+        </OverflowToolbar>
+        <FlexBox
+            width="{= ${device>/system/phone} ? '380px' : '450px'}"
+            height="200px"
+            alignItems="Center"
+            justifyContent="Center"
+        >
+            <GenericTile
+                class="genericTileClass sapUiSmallMarginBegin sapUiSmallMarginTop"
+                header="SCAN PRODUCTS"
+                press="onScanBarcode"
+            >
+                <TileContent>
+                    <ImageContent src="sap-icon://bar-code" />
+                </TileContent>
+            </GenericTile>
+            <GenericTile
+                class="genericTileClass sapUiSmallMarginBegin sapUiSmallMarginTop"
+                header="SEARCH PRODUCTS"
+                press="onSearchProducts"
+            >
+                <TileContent>
+                    <ImageContent src="sap-icon://search" />
+                </TileContent>
+            </GenericTile>
+        </FlexBox>
+    </Dialog>
+</core:FragmentDefinition>

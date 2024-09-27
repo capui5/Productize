@@ -1,0 +1,260 @@
+<mvc:View
+    controllerName="com.product.salesorder.controller.NewProfile"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Page
+        showHeader="false"
+        class="newcustpage"
+    >
+        <OverflowToolbar
+            class="headers"
+            id="transheader"
+        >
+            <Button
+                icon="sap-icon://nav-back"
+                press="onNavBacktoBrand"
+            />
+            <Text
+                text="SALES ORDER"
+                class="mainmenutext"
+            />
+            <ToolbarSpacer />
+            <Button
+                text="CREATE SALES ORDER"
+                press="Onroutetotranspage"
+                type ="Emphasized"
+               
+            />
+        </OverflowToolbar>
+        <VBox
+            class="sapUiSmallMargin"
+            alignItems="Center"
+            justifyContent="Center"
+        >
+            <Title
+                text="NEW CUSTOMER PROFILE"
+                level="H3"
+                class="Newcustomer"
+            />
+            <Text
+                text="PLEASE ENTER DETAILS"
+                class="pleaseenter"
+            />
+        </VBox>
+        <FlexBox
+            alignItems="Center"
+            justifyContent="Center"
+        >
+            <f:Form
+                id="FormChange354wideDual"
+                editable="true"
+            >
+                <f:layout>
+                    <f:ResponsiveGridLayout
+                        breakpointXL="1000"
+                        labelSpanXL="4"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="0"
+                        emptySpanL="0"
+                        emptySpanM="0"
+                        emptySpanS="0"
+                        columnsXL="3"
+                        columnsL="2"
+                        columnsM="2"
+                        singleContainerFullSize="false"
+                    />
+                </f:layout>
+                <f:formContainers>
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="{i18n>Name}">
+                                <f:fields>
+                                    <Select
+                                        id="title"
+                                        selectedKey="{Country}"
+                                    >
+                                        <items>
+                                            <core:Item
+                                                text="{i18n>Mr.}"
+                                                key="1"
+                                            />
+                                            <core:Item
+                                                text="{i18n>Mrs.}"
+                                                key="2"
+                                            />
+                                            <core:Item
+                                                text="{i18n>Ms.}"
+                                                key="3"
+                                            />
+                                        </items>
+                                    </Select>
+                                    <Input
+                                        placeholder="{i18n>First_Name}"
+                                        id="fname"
+                                        required="true"
+                                    />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>Last_Name}">
+                                <f:fields>
+                                    <Input
+                                        placeholder="{i18n>Last_Name}"
+                                        id="lname"
+                                        required="true"
+                                    />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>Email}">
+                                <f:fields>
+                                    <Input
+                                        placeholder="{i18n>Email_Address}"
+                                        id="email"
+                                        required="true"
+                                    />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>Mobile_Number}">
+                                <f:fields>
+                                    <Select
+                                        editable="false"
+                                        id="countrycode"
+                                        items="{path: 'mainModel>/CountryTelCodeSet',
+                                                length: 5000
+                                                }"
+                                        required="true"
+                                    >
+                                        <items>
+                                            <core:Item
+                                                text="{mainModel>TelCode}"
+                                                key="{mainModel>Land1}"
+                                            />
+                                        </items>
+
+                                        <layoutData>
+                                            <l:GridData span="XL4 L4 M3 S12" />
+                                        </layoutData>
+                                    </Select>
+                                    <Input
+                                        placeholder="{i18n>Mobile_Number}"
+                                        id="phoneno"
+                                        required="true"
+                                    />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>Sales_Employee}">
+                                <f:fields>
+                                    <Select
+                                        visible="true"
+                                        items="{SalesEmployeesModel>/}"
+                                        id="employeeid"
+                                        change="onSelectionChange"
+                                    >
+                                        <items>
+                                            <core:Item
+                                                text="{SalesEmployeesModel>Pernr}"
+                                            />
+                                        </items>
+                                    </Select>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="{i18n>Street}">
+                                <f:fields>
+                                    <Input
+                                        placeholder="{i18n>Street}"
+                                        id="street1"
+                                    />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>Pincode}/{i18n>City}">
+                                <f:fields>
+                                    <Input
+                                        placeholder="{i18n>Pincode}"
+                                        id="pcode"
+                                    />
+                                    <Input
+                                        placeholder="{i18n>City}"
+                                        id="city"
+                                    />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>Country}">
+                                <f:fields>
+                                    <Select
+                                        editable="false"
+                                        items="{
+                                                path: 'mainModel>/CountrySet',
+                                                length: 5000
+                                                }"
+                                        id="country"
+                                    >
+                                        <items>
+                                            <core:Item
+                                                text="{mainModel>Landx}"
+                                                key="{mainModel>Land1}"
+                                            />
+                                        </items>
+                                    </Select>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Tourist">
+                                <f:fields>
+                                    <CheckBox
+                                        select="onSelectTourist"
+                                        selected="false"
+                                    />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Date of Birth">
+                                <f:fields>
+                                    <DatePicker
+                                        id="datePickerId"
+                                        calendarType=""
+                                        value="{
+                            'path':'',
+                            'type':'sap.ui.model.type.Date',
+                            'formatOptions': {
+                                'pattern': 'dd-MM-yyyy'
+                            }
+                        }"
+                                        required="true"
+                                        class="sapUiSmallMarginBottom"
+                                    />
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                </f:formContainers>
+            </f:Form>
+        </FlexBox>
+       
+
+        <Text
+            text="By submitting this form, you have read and agreed to LUXASIA's privacy notice (www.luxasia.com/privacy/). You consent to the LUXASIA group collecting, processing and disclosing your personal data for marketing, research, customer relationship management, and other purposes specified in the notice. You also agree to receive updates about events, products and tailored services through various communication channels. You may withdraw your consent at any time by writing to dpo@luxasia.com."
+            class="pleaseenter1"
+        />
+        <HBox
+            alignItems="Center"
+            justifyContent="Center"
+        >
+            <Button
+                text="Create New Profile"
+                press="onCreateProfile"
+                type= "Emphasized"
+                width="300px"
+               class= "wide-button1"
+            />
+        </HBox>
+    </Page>
+</mvc:View>
